@@ -1,10 +1,10 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { ControlTheme } from "../ThemeProvider/control-theme";
+import { ControlTheme } from "@/Providers/ThemeProvider/control-theme";
 
 export const Header = () => {
-  const { theme } = useTheme();
+  const { resolvedTheme } = useTheme();
 
   return (
     <header className="w-full  flex flex-row justify-between p-4 lg:p-7 items-center shadow-md  dark:bg-dark_blue">
@@ -14,7 +14,9 @@ export const Header = () => {
       <div className="w-[40%] xl:w-[20%] flex justify-center items-center gap-1 py-4">
         <ControlTheme />
         <span className="font-semibold lg:text-[20px] lg:px-4">
-          {theme && theme === "dark" ? "Light Mode" : "Dark Mode"}
+          {resolvedTheme && resolvedTheme === "dark"
+            ? "Light Mode"
+            : "Dark Mode"}
         </span>
       </div>
     </header>
