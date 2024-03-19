@@ -1,34 +1,50 @@
+"use client";
+
 import Image from "next/image";
-import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
-import { Country } from "@/data/mockData";
+import { Card, CardContent, CardTitle } from "../ui/card";
+import { CountriesData } from "@/types";
+import { useRouter } from "next/navigation";
 
 type Props = {
-  data: Country;
+  data: CountriesData;
 };
 
 export const CountriesCards = ({ data }: Props) => {
+  const router = useRouter();
+
+  const nextPage = (countryName: string) => {
+    router.push(`/details/country/${countryName}`);
+    router.refresh();
+  };
+
   return (
-    <Card className="w-[100%] h-[380px] rounded-lg dark:bg-dark_blue hover:cursor-pointer">
-      <Image
-        src={
-          "https://s1.static.brasilescola.uol.com.br/be/conteudo/images/2-bandeira-do-brasil.jpg"
-        }
-        width={400}
-        height={300}
-        alt="bandeira do Brasil"
-        className="rounded-md"
-      />
+    <Card
+      className="w-[100%] h-[380px] rounded-lg dark:bg-dark_blue hover:cursor-pointer"
+      onClick={() => nextPage(data.name.common)}
+    >
+      <div className="w-full h-auto">
+        <Image
+          src={`${data.flags.png}`}
+          width={400}
+          height={300}
+          alt={`${data.flags.alt}`}
+          className="rounded-md h-[200px]"
+        />
+      </div>
       <CardContent className="p-4">
-        <CardTitle>{data.name}</CardTitle>
+        <CardTitle>{data.name.common}</CardTitle>
         <CardContent className="flex flex-col justify-start mt-[1.5rem] p-0">
           <span className="font-bold">
-            Population: <span className="font-normal">{data.population}</span>
+            Population:
+            <span className="font-normal"> {data.population}</span>
           </span>
           <span className="font-bold">
-            Region: <span className="font-normal">{data.region}</span>
+            Region:
+            <span className="font-normal"> {data.region}</span>
           </span>
           <span className="font-bold">
-            Capital: <span className="font-normal">{data.capital}</span>
+            Capital:
+            <span className="font-normal"> {data.capital}</span>
           </span>
         </CardContent>
       </CardContent>
