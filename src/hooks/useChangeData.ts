@@ -1,10 +1,11 @@
 "use client";
 
+import { getCountries } from "@/services/getCountries";
 import { CountriesData } from "@/types";
+import { filterFields } from "@/utils/filterFields";
 import { validateField } from "@/utils/validateField";
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
-import { Countries } from "@/types";
 
 export const useChangeData = () => {
   const [data, setData] = useState<CountriesData[]>([]);
@@ -13,25 +14,20 @@ export const useChangeData = () => {
   const name = searchParams.get("name") as string;
 
   useEffect(() => {
-    const getCountries = async (name: string): Promise<void> => {
-      const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/all`);
-      const res: CountriesData[] = await data.json();
+    const getAll = async (name: string): Promise<void> => {
+      const res = await getCountries();
       setData(res);
 
       const isValid = validateField(name);
 
-      if (isValid && name === typeof Countries) {
-        const data = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/name/${name}?fullText=true`
-        );
-        const res: CountriesData[] = await data.json();
-
-        setData(res);
+      if (name && isValid) {
+        const filterByName = filterFields(res, name).filterByName;
+        setData(filterByName);
       }
     };
 
-    getCountries(name);
-  }, [name, data]);
+    getAll(name);
+  }, [name]);
 
   return { data };
 };
