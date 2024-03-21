@@ -15,7 +15,7 @@ export default function Home() {
         <SearchCountry />
         <SelectFilter />
       </div>
-      <div className="w-full grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-8 md:gap-8 lg:gap-20 xl:gap-16 pt-8 xl:grid xl:grid-cols-4 pb-8">
+      <div className="w-full grid sm:grid-cols-2 md:grid-cols-3 gap-10 sm:gap-8 md:gap-8 lg:gap-20 xl:gap-16 pt-[8rem] xl:grid xl:grid-cols-4 pb-8">
         {data &&
           data.map((countries: CountriesData, index: number) => {
             return <CountriesCards data={countries} key={index} />;

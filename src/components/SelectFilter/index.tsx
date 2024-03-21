@@ -34,7 +34,7 @@ export function SelectFilter() {
       <SelectTrigger className="w-[180px] dark:bg-dark_blue ring-0 focus:ring-0 focus:ring-offset-0">
         <SelectValue placeholder="Filter by Region" />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent className="z-50">
         <SelectGroup>
           <SelectItem value="Clear">Clear</SelectItem>
           <SelectItem value="Africa">Africa</SelectItem>
