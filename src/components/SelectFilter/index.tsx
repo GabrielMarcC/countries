@@ -6,7 +6,6 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
@@ -39,7 +38,7 @@ export function SelectFilter() {
         <SelectGroup>
           <SelectItem value="Clear">Clear</SelectItem>
           <SelectItem value="Africa">Africa</SelectItem>
-          <SelectItem value="America">America</SelectItem>
+          <SelectItem value="Americas">America</SelectItem>
           <SelectItem value="Asia">Asia</SelectItem>
           <SelectItem value="Europe">Europe</SelectItem>
           <SelectItem value="Oceania">Oceania</SelectItem>

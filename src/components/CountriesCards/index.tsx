@@ -29,6 +29,7 @@ export const CountriesCards = ({ data }: Props) => {
           height={300}
           alt={`${data.flags.alt}`}
           className="rounded-md h-[200px]"
+          priority
         />
       </div>
       <CardContent className="p-4">

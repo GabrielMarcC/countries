@@ -2,21 +2,32 @@ import { CountriesData } from "@/types";
 
 export const filterFields = (
   countries: CountriesData[],
-  countryName: string
+  countryName?: string,
+  region?: string
 ) => {
-  const filterByName = countries.filter((country) => {
-    const formatCountry = countryName.toLowerCase();
-    const formatData = country.name.common.toLowerCase();
+  const filterByNames = () => {
+    if (countryName) {
+      const formatCountry = countryName.toLowerCase();
+      const filteredCountries = countries.filter((country) => {
+        const formatData = country.name.common.toLowerCase();
+        return formatData.startsWith(formatCountry);
+      });
 
-    return formatData.startsWith(formatCountry);
-  });
+      return filteredCountries;
+    }
+  };
 
-  const filterByRegion = countries.filter((country) => {
-    const formatCountry = countryName.toLowerCase();
-    const formatData = country.name.common.toLowerCase();
+  const filterByRegions = () => {
+    if (region) {
+      const formatRegion = region.toLowerCase();
+      const filteredRegions = countries.filter((country) => {
+        const formatCountryRegion = country.region.toLowerCase();
+        return formatCountryRegion === formatRegion;
+      });
 
-    return formatCountry === formatData;
-  });
+      return filteredRegions;
+    }
+  };
 
-  return { filterByName, filterByRegion };
+  return { filterByNames, filterByRegions };
 };
