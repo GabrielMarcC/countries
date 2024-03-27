@@ -73,12 +73,14 @@ export const CountryDetail = async ({ data }: Props) => {
             </div>
           </div>
         </div>
-        <div className="w-full pt-2">
-          <span>
+        {data.borders && data.borders.length > 0 ? (
+          <div className="w-full pt-2">
             <strong>Border countries: </strong>
             {data.borders.join(", ")}
-          </span>
-        </div>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
