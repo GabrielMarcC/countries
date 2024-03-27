@@ -30,6 +30,7 @@ export const CountriesCards = ({ data }: Props) => {
           alt={`${data.flags.alt}`}
           className="rounded-md h-[200px]"
           priority
+          objectFit="cover"
         />
       </div>
       <CardContent className="p-4">

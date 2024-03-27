@@ -12,13 +12,15 @@ export const CustomButton = () => {
   };
 
   return (
-    <Button
-      variant="default"
-      className="bg-white text-black flex justify-center items-center gap-2 rounded-md border"
-      onClick={() => handleNavigate()}
-    >
-      <FaArrowLeft />
-      Back
-    </Button>
+    <div className="w-[100%]  flex justify-start items-center">
+      <Button
+        variant="default"
+        className="w-[120px] dark:bg-dark_blue dark:text-white bg-white text-black flex justify-center items-center gap-2 rounded-sm border"
+        onClick={() => handleNavigate()}
+      >
+        <FaArrowLeft />
+        Back
+      </Button>
+    </div>
   );
 };

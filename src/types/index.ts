@@ -1,11 +1,16 @@
-type Name = {
+type NamesCode = {
+  official: string;
   common: string;
-  native_name: NativeName;
 };
 
-type NativeName = {
-  [name: string]: string;
+type NativeNames = {
+  [languageCode: string]: NamesCode;
 };
+
+export interface CountryName {
+  common: string;
+  nativeName: NativeNames;
+}
 
 type Flags = {
   png: string;
@@ -13,21 +18,30 @@ type Flags = {
 };
 
 export interface CountriesData {
-  [x: string]: any;
+  [countryCode: string]: any;
   flags: Flags;
-  name: Name;
+  name: CountryName;
   population: number;
   region: string;
   capital: string[];
 }
 
 type Languages = {
-  [name: string]: string;
+  [languageCode: string]: string;
 };
 
-export interface CountriesDetails extends CountriesData {
-  region: string;
-  sub_region: string;
+type CurrencyName = {
+  name: string;
+};
+
+type Currency = {
+  [currency: string]: CurrencyName;
+};
+
+export interface CountryDetails extends CountriesData {
+  subregion: string;
   languages: Languages;
-  curriences: { currency: string };
+  currencies: Currency;
+  tld: string[];
+  borders: string[];
 }

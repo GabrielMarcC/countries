@@ -1,11 +1,13 @@
-import { CountriesData, CountriesDetails } from "@/types";
+import { CountriesData, CountryDetails } from "@/types";
 
 export const getCountries = async (
   param?: string
-): Promise<CountriesData[] | CountriesDetails[]> => {
+): Promise<CountriesData[] | CountryDetails[]> => {
   if (param) {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${param}`, {});
-    const result: CountriesDetails[] = await res.json();
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/${param}`, {
+      cache: "force-cache",
+    });
+    const result: CountryDetails[] = await res.json();
     return result;
   }
 
